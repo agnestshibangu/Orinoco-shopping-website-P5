@@ -8,9 +8,26 @@ productNumber = parseInt(cartNumber);
 document.getElementById('spanCartNb').innerText = productNumber
 
 displayInCart(); 
+cartIsEmptySign();
+
+// 
+
+function cartIsEmptySign() {
+
+  let x = document.getElementById("pop-up-cart-empty")
+  let cart = JSON.parse(localStorage.getItem('data'))
+  console.log(cart.length)
+  console.log(cart)
+  
+  if ( (cart == undefined ) ||  (cart.length == 0 )) {
+    x.style.display = "block"
+  } else {
+    x.style.display = "none";
+  }
+}
 
 
-
+// DISPLAY IN CART 
 
 function displayInCart() {
 
@@ -25,7 +42,6 @@ function displayInCart() {
   if (data) {
     var cartRow = document.createElement('div');
     var cartItems = document.getElementById('items-container');
-
     const item = document.getElementById('item-card')
     const templateAdd = document.getElementById('template')
     const cloneAdd = document.importNode(templateAdd.content, true)
@@ -54,7 +70,7 @@ function displayInCart() {
 
 }
 
-
+// REMOVE ITEM FROM CART
 
 var removeButtons = document.getElementsByClassName('btn-warning')
 
@@ -194,6 +210,12 @@ const form = document.getElementById('form')
 
 form.addEventListener('submit', async (e) => {
 
+
+    if ((localStorage.getItem('data', '[]' ))) {
+      alert("error : Your cart is empty !")
+      e.preventDefault()
+      return
+    }
  
 
     var letters = /^[A-Za-z]+$/;

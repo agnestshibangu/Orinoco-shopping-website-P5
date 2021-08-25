@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/style/bootstrap-4.0.0-dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/6a824a900d.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/style/main.css">
-    <!-- <script async src="app.js"></script> -->
+    
    
-    <title>Orinoco</title>
+    <title>Orinoco </title>
 
     
 </head>
@@ -31,18 +31,12 @@
 
 <div class="main-item-container">
 
-        <h1 class="text-center mt-4">Shopping Cart</h1>
-
-        <!-- <div class="titles align-middle mt-5">
-
-            <span class="item-info align-baseline ">Item</span>
-            <span class="item-info align-baseline ">Price</span>
-            <span class="item-info align-baseline ">Quantity</span>
-
-        </div> -->
+        <h1 class="shopping-cart-title">Shopping Cart</h1>
 
 
             <div id="items-container">
+
+               <span id="pop-up-cart-empty"><p id="pop-up-inner-text">Your cart is empty !</p></span>
 
               <template id="template">
 
@@ -63,9 +57,7 @@
               
             </div>
 
-
-
-        <div class="total-box">
+        <div class="total-box"> 
           
             <p id="box-price"></p> </p>
             <p id="box-quantity"></p> </p>
@@ -108,7 +100,7 @@
         <input type="text" class="form-control" id="email" >
       </div>  
 
-      <button type="submit">Submit</button>
+      <button class="submit-btn" type="submit">Submit</button>
 
   </form>
 

@@ -97,7 +97,6 @@ function infoProduct(data) {
 
       } else if (item == undefined) {
 
-        console.log('old data inf to 1 ')
         oldData.push(newData)
         console.log(oldData)
         localStorage.setItem('data', JSON.stringify(oldData))

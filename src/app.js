@@ -19,7 +19,7 @@ function showCameras(data) {
     
     for (var i = 0; i < data.length; i++) {
         const card = `
-        <div class="card col-sm-12 col-4  mx-auto products" style="width: 18rem;">
+        <div class="card mx-auto products" style="width: 18rem;">
             <img src="${data[i].imageUrl}" class="card-img-top" alt="${data[i].name}">
         <div class="card-body">
             <h5 class="card-title">${data[i].name}</h5>
