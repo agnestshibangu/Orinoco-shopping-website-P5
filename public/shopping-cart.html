@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/6a824a900d.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/style/main.css">
+    <!-- <script async src="app.js"></script> -->
+   
+    <title>Orinoco</title>
+
+    
+</head>
+<body>
+ <!-- NAVBAR -->
+ <ul class="nav nav-pills">
+    
+  <img class=logo src="../images/15675819263013_image1.WebP"></img>
+    <li class="nav-item">
+        <a class="nav-link" href="index.html">SHOP</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link"  href="shopping-cart.html" tabindex="-1" aria-disabled="true"><i class="fas fa-shopping-basket"></i>CART(<span id="spanCartNb">0</span>)</a>
+    </li>
+</ul>
+
+
+<div class="main-item-container">
+
+        <h1 class="text-center mt-4">Shopping Cart</h1>
+
+        <!-- <div class="titles align-middle mt-5">
+
+            <span class="item-info align-baseline ">Item</span>
+            <span class="item-info align-baseline ">Price</span>
+            <span class="item-info align-baseline ">Quantity</span>
+
+        </div> -->
+
+
+            <div id="items-container">
+
+              <template id="template">
+
+                <div class="item-card" id="item-card" row mt-5> 
+                  <div class="box-item">
+                      <img class="img-cart" id="img-cart" src="" alt="">
+                     
+                  </div>
+                  <p class="item-title" id="item-name"></p>
+                  <p class="price" id="price"></p>
+                  <!-- <input id="number" class="quantity" value="1"  type="number" > -->
+                  <button class="btn btn-warning">Remove</button>
+                </div>
+              
+              </template>
+
+              <div id="item"></div>
+              
+            </div>
+
+
+
+        <div class="total-box">
+          
+            <p id="box-price"></p> </p>
+            <p id="box-quantity"></p> </p>
+        </div>
+
+</div>
+ 
+
+
+<h2 class="text-center">CONTACT FORM</h2>
+
+<form action="validation.html" method="GET" id="form">
+
+      
+
+    <div class="mb-3 form-input">
+      <label for="First Name" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName" >
+    </div>
+
+    <div class="mb-3 form-input">
+      <label for="LastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="LastName">
+    </div>
+
+
+      <div class="mb-3 form-input ">
+        <label for="Nom-de-voie" class="form-label">Nom de la voie</label>
+        <input type="text" class="form-control" id="NameAd">
+      </div>
+
+      <div class="mb-3 form-input ">
+        <label for="City" class="form-label">City</label>
+        <input type="text" class="form-control" id="city">
+      </div>
+
+  
+      <div class="mb-3 form-input">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" >
+      </div>  
+
+      <button type="submit">Submit</button>
+
+  </form>
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+
+    <script  src="../src/shopping-cart.js"></script>
+</html>
+
+
