@@ -41,14 +41,10 @@ function displayInCart() {
 
 
     if (data) {
-      //let cartRow = document.createElement('div');
-      //let cartItems = document.getElementById('items-container');
-      //const item = document.getElementById('item-card')
       const templateAdd = document.getElementById('template')
       const cloneAdd = document.importNode(templateAdd.content, true)
       cloneAdd.getElementById('item-name').textContent = data.name
       cloneAdd.getElementById('price').textContent = data.price
-      // cloneAdd.getElementById('number').textContent = data.quantity
       cloneAdd.getElementById('img-cart').src = data.imageUrl
 
 
@@ -101,7 +97,7 @@ function deleteItem() {
       for (let i = oldData.length - 1; i >= 0; i--) {
 
 
-        if (JSON.parse(oldData[i]).name === name) {
+        if (oldData[i].name === name) {
           console.log(oldData[i].name)
           oldData.splice(i, 1);
         }
@@ -219,6 +215,7 @@ const form = document.getElementById('form')
 
 form.addEventListener('submit', async (e) => {
 
+  let emailReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+[a-zA-Z0-9-]+)/  
   var letters = /^[A-Za-z]+$/;
   var numbers = /^[0-9]+$/;
 
@@ -251,10 +248,9 @@ form.addEventListener('submit', async (e) => {
 
   // email 
 
-  if (!email.value.match(letters) || email.value == null || email.value.length <= 3) {
-    alert("error : email value can't be null must and must contain letters only !")
+  if (!email.value.match(emailReg)) {
+    alert("error : First name value can't be null and must contain letters only !")
     e.preventDefault()
-
   }
 
   // if (localStorage.getItem('data', '[]')) {
@@ -276,20 +272,18 @@ form.addEventListener('submit', async (e) => {
     email: email.value
   }
 
-/////
+ 
 
+  // on ajoute le nouvel objet au tableau d'item
   localStorage.setItem('dataInfo', JSON.stringify(objInfo))
 
-  
   var products = JSON.parse(localStorage.getItem('data'))
   console.log(products)
 
-  
   var productsPost = []
   products.forEach(element => productsPost.push(element.id));
   console.log(productsPost)
   
-
   var fullData = {
     contact: objInfo,
     products: productsPost,
@@ -297,8 +291,6 @@ form.addEventListener('submit', async (e) => {
 
   console.log(fullData)
   console.log(typeof (fullData))
-
-/////
 
   
 
