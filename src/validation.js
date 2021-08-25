@@ -6,13 +6,6 @@ function emptyCart() {
 
 emptyCart();
 
-
-// var url_orderId = new URLSearchParams(window.location.search);
-
-// var orderId = url_orderId.get("orderId");
-
-// console.log(orderId)
-
 var products = localStorage.getItem('data')
 console.log(products)
 
