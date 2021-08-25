@@ -7,8 +7,14 @@ let cartNumber = localStorage.getItem('cartNumber');
 productNumber = parseInt(cartNumber);
 document.getElementById('spanCartNb').innerText = productNumber
 
-displayInCart(); 
+displayInCart();
 
+function emptyCart() {
+  alert ('thank you for spending your money')
+  localStorage.setItem('data', '[]')
+  window.location.reload()
+
+}
 
 
 
@@ -56,6 +62,10 @@ function displayInCart() {
 
 
 
+
+
+
+
 var removeButtons = document.getElementsByClassName('btn-warning')
 
 for( var i=0; i < removeButtons.length; i++) {
@@ -64,6 +74,8 @@ console.log(i)
 
 button.addEventListener('click', function(event) {
 
+
+  emptyCart()
 
     // on recupère le nom de l'item //  
     let name = event.target.parentElement.children[1].textContent
@@ -86,13 +98,10 @@ button.addEventListener('click', function(event) {
          }
   
     localStorage.setItem('data', JSON.stringify(oldData))
+    console.log(oldData)
     window.location.reload()
-   
+
         }
-
-        updateCartTotal();
-
-
     })
 }
 
@@ -103,16 +112,18 @@ function updateCartTotal() {
   const cartItemsContainer = document.getElementById('items-container')
   const cartRows = cartItemsContainer.getElementsByClassName("item-card")
   var total = 0
-  var quantity = 1
+  var quantity = 0
   for (var i = 0; i < cartRows.length; i++) {
       var cartRow = cartRows[i]
       var priceElement = cartRow.getElementsByClassName('price')[0]
-      // quantityElement = cartRow.getElementsByClassName('quantity')[0]
+      var quantityElement = cartRow.getElementsByClassName('quantity')[0]
       var price = parseFloat(priceElement.innerText.replace('€', ''))
-      //var quantity = quantityElement.value
+      // var quantity = quantityElement.value
       total = total + (price * quantity)
+     
   }
-  
+ 
+ 
   document.getElementById('box-price').innerText = "TOTAL  € " + total
 }
 
@@ -129,7 +140,6 @@ function ready() {
       var input = quantityInputs[i]
       input.addEventListener('change', quantityChanged)
   }
-  
 
 }
 
@@ -298,7 +308,7 @@ form.addEventListener('submit', async (e) => {
       
          console.log(data.orderId)
          localStorage.setItem('orderId', data.orderId)
-         
+       
                         
      })
     
@@ -306,6 +316,6 @@ form.addEventListener('submit', async (e) => {
          alert(error)
      });
 
-     
+ 
     
  });
