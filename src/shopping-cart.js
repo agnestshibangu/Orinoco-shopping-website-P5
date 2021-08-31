@@ -1,18 +1,8 @@
-///////////////////// display in cart 
-
-//// set localstorage
-
-// display num of items in cart
-let cartNumber = localStorage.getItem('cartNumber');
-productNumber = parseInt(cartNumber);
-document.getElementById('spanCartNb').innerText = productNumber
-
 displayInCart();
 cartIsEmptySign();
 deleteItem();
 
-// 
-
+// if cart is empty display "empty cart" panel in html
 function cartIsEmptySign() {
 
   let x = document.getElementById("pop-up-cart-empty")
@@ -27,18 +17,13 @@ function cartIsEmptySign() {
   }
 }
 
-
-// DISPLAY IN CART 
-
+// display items in cart
 function displayInCart() {
 
   let objItem = JSON.parse(localStorage.getItem('data'));
 
   for (let i = 0; i < objItem.length; i++) {
-
-
     let data = objItem[i];
-
 
     if (data) {
       const templateAdd = document.getElementById('template')
@@ -46,13 +31,7 @@ function displayInCart() {
       cloneAdd.getElementById('item-name').textContent = data.name
       cloneAdd.getElementById('price').textContent = data.price
       cloneAdd.getElementById('img-cart').src = data.imageUrl
-
-
       document.getElementById('item').appendChild(cloneAdd)
-
-
-      //cartItems.append(item);
-
 
       let cartItemNames = document.getElementsByClassName('card-title')
       let cartRowtitle = document.getElementsByClassName('item-title')
@@ -65,12 +44,9 @@ function displayInCart() {
 
   }
 
-
-
 }
 
-// REMOVE ITEM FROM CART
-
+// remove item from html and localStorage
 function deleteItem() {
 
   let removeButtons = document.getElementsByClassName('btn-warning')
@@ -81,18 +57,12 @@ function deleteItem() {
 
     button.addEventListener('click', function (event) {
 
-
-      // on recupère le nom de l'item //  
       let name = event.target.parentElement.children[1].textContent
-      console.log(name)
 
       let buttonClicked = event.target;
       buttonClicked.parentElement.parentElement.remove()
 
       let oldData = JSON.parse(localStorage.getItem('data'));
-      console.log(oldData)
-
-      /////////// on enlève l'objet à la liste //////////
 
       for (let i = oldData.length - 1; i >= 0; i--) {
 
@@ -115,8 +85,7 @@ function deleteItem() {
 
 }
 
-////////// CART TOTAL /////////
-
+// update cart total
 function updateCartTotal() {
   const cartItemsContainer = document.getElementById('items-container')
   const cartRows = cartItemsContainer.getElementsByClassName("item-card")
@@ -125,13 +94,12 @@ function updateCartTotal() {
   for (let i = 0; i < cartRows.length; i++) {
     let cartRow = cartRows[i]
     let priceElement = cartRow.getElementsByClassName('price')[0]
-    // quantityElement = cartRow.getElementsByClassName('quantity')[0]
     let price = parseFloat(priceElement.innerText.replace('€', ''))
-    //var quantity = quantityElement.value
     total = total + (price * quantity)
   }
 
   document.getElementById('box-price').innerText = "TOTAL  € " + total
+  totalPriceLocalStorage()
 }
 
 
@@ -151,32 +119,13 @@ function ready() {
 
 }
 
-/**
- * Remove cart item...
- * @param {event} event - Un event de click sur un bouton
- */
 
 function removeCartItem(event) {
   let buttonClicked = event.target
   buttonClicked.parentElement.remove()
-
   updateCartTotal()
   cartNumbers()
-}
 
-function cartNumbers() {
-
-  let productNumbers = localStorage.getItem('cartNumber');
-
-  productNumbers = parseInt(productNumbers);
-
-  if (productNumbers) {
-    localStorage.setItem('cartNumber', productNumbers - 1);
-    document.getElementById('spanCartNb').innerText = productNumbers - 1;
-
-  }
-
-  console.log('minus one')
 }
 
 
@@ -189,19 +138,18 @@ function quantityChanged(event) {
 
 }
 
+function totalPriceLocalStorage() {
+  let total = document.getElementById('box-price').innerText
+  let totalArray = []
+  totalArray.push(total)
+  localStorage.setItem('total', JSON.stringify(totalArray))
+}
 
 updateCartTotal();
 ready();
 
-/////////////////////////// SUPPRESS DATA
 
-
-//////////////////////// validation email ///////////////////
-
-
-
-//////////////////////// validation email ///////////////////
-
+////////////// FORM //////////////
 
 
 const titre = document.getElementById("titreH3")
@@ -215,18 +163,16 @@ const form = document.getElementById('form')
 
 form.addEventListener('submit', async (e) => {
 
-  let emailReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+[a-zA-Z0-9-]+)/  
+  let emailReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+[a-zA-Z0-9-]+)/
   var letters = /^[A-Za-z]+$/;
   var numbers = /^[0-9]+$/;
 
-  // firstName
 
   if (!firstName.value.match(letters) || firstName.value == null || firstName.value.length <= 3) {
     alert("error : First name value can't be null and must contain letters only !")
     e.preventDefault()
   }
 
-  // // lastName 
 
   if (!lastName.value.match(letters) || lastName.value == null || lastName.value.length <= 3) {
     alert("error : Last name value can't be null and must contain letters only !")
@@ -234,30 +180,22 @@ form.addEventListener('submit', async (e) => {
   }
 
 
-  // // Nom de rue 
   if (!NameAd.value.match(letters) || NameAd.value == null || NameAd.value.length <= 3) {
     alert("error : First name value can't be null mus and must contain letters only !")
     e.preventDefault()
   }
 
-  // // Ville
+  
   if (!city.value.match(letters) || city.value == null || city.value.length <= 3) {
     alert("error : City value can't be null must and must contain letters only !")
     e.preventDefault()
   }
 
-  // email 
 
   if (!email.value.match(emailReg)) {
     alert("error : First name value can't be null and must contain letters only !")
     e.preventDefault()
   }
-
-  // if (localStorage.getItem('data', '[]')) {
-  //   alert("error : Your cart is empty !")
-  //   e.preventDefault()
-  //   return
-  // }
 
 
   if (localStorage.getItem('dataInfo') == null) {
@@ -272,27 +210,19 @@ form.addEventListener('submit', async (e) => {
     email: email.value
   }
 
- 
 
-  // on ajoute le nouvel objet au tableau d'item
   localStorage.setItem('dataInfo', JSON.stringify(objInfo))
 
   var products = JSON.parse(localStorage.getItem('data'))
-  console.log(products)
 
   var productsPost = []
   products.forEach(element => productsPost.push(element.id));
-  console.log(productsPost)
-  
+
   var fullData = {
     contact: objInfo,
     products: productsPost,
   }
 
-  console.log(fullData)
-  console.log(typeof (fullData))
-
-  
 
 
   /// fetch post request
@@ -302,19 +232,15 @@ form.addEventListener('submit', async (e) => {
     body: JSON.stringify(fullData),
     headers: { "Content-type": "application/json" },
   })
-    .then(response => response.json())
-    .then(function (data) {
+  .then(response => response.json())
+  .then(function (data) {
 
-      console.log(data.orderId)
-      localStorage.setItem('orderId', data.orderId)
+  localStorage.setItem('orderId', data.orderId)
 
+ })
 
-    })
-
-    .catch((error) => {
-      alert(error)
-    });
-
-
+  .catch((error) => {
+    alert(error)
+  });
 
 });

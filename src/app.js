@@ -1,17 +1,11 @@
-///////////////////// FUNCTION A TESTER APP No 1 ////////////////////
 fetch('http://localhost:3000/api/cameras')
 .then((resp) => resp.json())
 .then(function (data) {
     showCameras(data);
+    
 })
 
-// display num of items in cart
-let cartNumber = localStorage.getItem('cartNumber');
-productNumber = parseInt(cartNumber);
-document.getElementById('spanCartNb').innerText = productNumber
-
-
-///////////////////// FUNCTION A TESTER APP No 2 ////////////////////
+// show data
 function showCameras(data) {
 
     console.log(data);
