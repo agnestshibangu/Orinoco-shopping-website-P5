@@ -2,7 +2,6 @@ let url_product_id = new URLSearchParams(window.location.search);
 let _id = url_product_id.get("id");
 
 fetch('http://localhost:3000/api/cameras/' + _id)
-    // fetch('http://localhost:3000/api/cameras/5be1ef211c9d44000030b062')
 
     .then((resp) => resp.json())
     .then(function (data) {

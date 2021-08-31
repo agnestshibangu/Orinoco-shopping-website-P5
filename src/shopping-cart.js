@@ -1,6 +1,7 @@
 displayInCart();
 cartIsEmptySign();
 deleteItem();
+updateCartTotal();
 
 // if cart is empty display "empty cart" panel in html
 function cartIsEmptySign() {
@@ -102,42 +103,7 @@ function updateCartTotal() {
   totalPriceLocalStorage()
 }
 
-
-function ready() {
-  let removeCartItemButtons = document.getElementsByClassName('btn-warning')
-
-  for (let i = 0; i < removeCartItemButtons.length; i++) {
-    var btn = removeCartItemButtons[i]
-    btn.addEventListener('click', removeCartItem)
-  }
-  let quantityInputs = document.getElementsByClassName("quantity")
-  for (let i = 0; i < quantityInputs.length; i++) {
-    let input = quantityInputs[i]
-    input.addEventListener('change', quantityChanged)
-  }
-
-
-}
-
-
-function removeCartItem(event) {
-  let buttonClicked = event.target
-  buttonClicked.parentElement.remove()
-  updateCartTotal()
-  cartNumbers()
-
-}
-
-
-function quantityChanged(event) {
-  let input = event.target
-  if (isNaN(input.value) || input.value <= 0) {
-    input.value = 1
-  }
-  updateCartTotal()
-
-}
-
+// return updated cart total in localStorage
 function totalPriceLocalStorage() {
   let total = document.getElementById('box-price').innerText
   let totalArray = []
@@ -145,8 +111,6 @@ function totalPriceLocalStorage() {
   localStorage.setItem('total', JSON.stringify(totalArray))
 }
 
-updateCartTotal();
-ready();
 
 
 ////////////// FORM //////////////
@@ -226,7 +190,6 @@ form.addEventListener('submit', async (e) => {
 
 
   /// fetch post request
-  console.log(JSON.stringify(fullData))
   fetch('http://localhost:3000/api/cameras/order', {
     method: 'POST',
     body: JSON.stringify(fullData),
