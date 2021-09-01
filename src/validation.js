@@ -1,3 +1,4 @@
+
 emptyCart();
 
 function emptyCart() {

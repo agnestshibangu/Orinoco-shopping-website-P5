@@ -103,7 +103,7 @@ function updateCartTotal() {
   totalPriceLocalStorage()
 }
 
-// return updated cart total in localStorage
+
 function totalPriceLocalStorage() {
   let total = document.getElementById('box-price').innerText
   let totalArray = []
@@ -133,31 +133,31 @@ form.addEventListener('submit', async (e) => {
 
 
   if (!firstName.value.match(letters) || firstName.value == null || firstName.value.length <= 3) {
-    alert("error : First name value can't be null and must contain letters only !")
+    alert("error : First name value can't be null and must contain letters only and length min 3 !")
     e.preventDefault()
   }
 
 
   if (!lastName.value.match(letters) || lastName.value == null || lastName.value.length <= 3) {
-    alert("error : Last name value can't be null and must contain letters only !")
+    alert("error : last name value can't be null and must contain letters only and length min 3!")
     e.preventDefault()
   }
 
 
   if (!NameAd.value.match(letters) || NameAd.value == null || NameAd.value.length <= 3) {
-    alert("error : First name value can't be null mus and must contain letters only !")
+    alert("error : address value can't be null and must contain letters only and length min 3 !")
     e.preventDefault()
   }
 
   
   if (!city.value.match(letters) || city.value == null || city.value.length <= 3) {
-    alert("error : City value can't be null must and must contain letters only !")
+    alert("error : city value can't be null and must contain letters only and length min 3!")
     e.preventDefault()
   }
 
 
   if (!email.value.match(emailReg)) {
-    alert("error : First name value can't be null and must contain letters only !")
+    alert("error : email must be valid !")
     e.preventDefault()
   }
 
@@ -190,6 +190,7 @@ form.addEventListener('submit', async (e) => {
 
 
   /// fetch post request
+  console.log(JSON.stringify(fullData))
   fetch('http://localhost:3000/api/cameras/order', {
     method: 'POST',
     body: JSON.stringify(fullData),

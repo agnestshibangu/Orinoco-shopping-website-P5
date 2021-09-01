@@ -43,7 +43,7 @@ a:hover {
     width: 150px;
     height: 50px;
     object-fit: cover;
-    margin-top: 2%;
+    margin-top: 13%;
 }
 
 .nav-link {
@@ -54,13 +54,13 @@ a:hover {
 
 .container {
     margin-top: 3%;
-    width: 50%;
+    width: 100%;
 }
 
 .card {
     margin: 3%;
     padding: 2%;
-    border-radius: 6%;
+    border-radius: 20px;
     transition: transform 0.2s;
     background-color: #f4e9f2;
     box-shadow: 0px 0px 30px rgb(102, 102, 102) ;
@@ -73,7 +73,7 @@ a:hover {
 }
 
 .card-img-top {
-    border-radius: 6%;
+    border-radius: 10px;
 }
 
 .col-4 {
@@ -120,11 +120,6 @@ a:hover {
    
 }
 
-.btn-warning {
-    margin-left: 100px;
-    height: 50px;
-    border-radius: 20px;
-}
 
 .price {
     font-size: 14px;
@@ -145,6 +140,7 @@ a:hover {
 #box-price {
     margin-top: 20px;
     margin-left: 500px 
+
 }
 
 .items-container {
@@ -159,7 +155,7 @@ a:hover {
     padding: 0 20px 20px 20px;
     box-shadow: 0px 0px 30px rgb(102 102 102);
     padding: 2%;
-    min-height: 200px;
+    min-height: auto;
 }
 
 #items-container-message {
@@ -209,7 +205,7 @@ a:hover {
     width: 40%;
     background-color: #f4e9f2;
     border-radius: 20px;
-    padding: 20px;
+    padding: 3% 3% 5% 3%;
     box-shadow: 0px 0px 30px rgb(102, 102, 102) ;
 }
 
@@ -217,6 +213,7 @@ a:hover {
     width: 50%;
     height: 40%;
     object-fit: cover;
+    border-radius: 10px;
 }
  
 .box-item {
@@ -229,6 +226,7 @@ a:hover {
     margin-top: 20px;
     width: 20%;
     margin-right: 7%;
+    margin-left: 10%;
 }
 
 .price {
@@ -236,10 +234,12 @@ a:hover {
 }
 
 .btn-warning {
-   
-    width: 20%;
-    margin-left: 25%;
+    width: 20%;  
+    height: 50px;
+    border-radius: 20px;  
 }
+
+
 
 #lense-select {
     margin-bottom: 20px;
@@ -261,6 +261,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    padding: 3%;
    
 }
 
@@ -286,6 +287,7 @@ a:hover {
     height: 100px;
     width: 70%;
     margin-left: 15%;
+    margin-bottom: 30px
  
 }
 
@@ -295,6 +297,14 @@ a:hover {
     margin-block: revert;
     width: 100%;
     padding-top: 30px;
+}
+
+.item-card:nth-of-type(1) {
+    margin-top: 0;
+}
+
+.fa-trash-alt {
+    display: none;
 }
 
 /* cart */
@@ -379,32 +389,38 @@ a:hover {
     margin: 50px auto;
 }
 
-
-
-@media (max-width: 600px) {
-    .container {
-        width: 80%
-    }
-
-    .col-4 {
-        flex: 1 1 118%;
-        min-width: 105%;
-    }
+#totalValidationPage {
+    width: auto;
+    height: auto;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: 900;
 }
 
 
 
-@media (min-width: 600px) {
+@media (max-width: 550px) {
+    .remove-letters {
+        display: none;
+    }
+    .fa-trash-alt {
+        display: block;
+    }
+}
+
+
+@media (max-width: 400px) {
     .container {
         margin-top: 3%;
         width: 90%;
     }
-  
+    .col-4 {
+        flex: 1 1 118%;
+        min-width: 105%;
+    }
+
+   
 }
 
-@media (min-width: 600px) {
-.col-4 {
-    flex: 1 1 1 22%;
-    min-width: 46%;
-}
-}
+
